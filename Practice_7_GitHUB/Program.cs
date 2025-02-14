@@ -10,6 +10,7 @@ namespace Practice_7_GitHUB
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Bububbubububububbububbbububb");
             Console.ReadKey();
         }
     }
