@@ -18,8 +18,9 @@ namespace Practice_7_GitHUB
                 {"Развлечения", new List<double>() }
             };
             double x = 0;
+            bool cycle = true;
             Console.WriteLine("Добро пожаловать в систему управления финансами!");
-            for (int i = 0; i < 3; i++)
+            while (cycle)
             {
                 Console.WriteLine("\n1. Добавить доход/расход  \n2. Показать отчет  \n3. Рассчитать баланс  \n4. Прогноз на следующий месяц  \n5. Статистика\n6. Выход  \n");
                 Console.Write("\nВыберите действие: ");
@@ -39,7 +40,7 @@ namespace Practice_7_GitHUB
                         PrintFinanceReport(categories);
                         break;
                     case 3:
-                        Console.WriteLine(3);
+                        Console.WriteLine($"Текущий баланс: {CalculateBalance(categories)}");
                         break;
                     case 4:
                         Console.WriteLine(4);
@@ -48,7 +49,8 @@ namespace Practice_7_GitHUB
                         Console.WriteLine(5);
                         break;
                     case 6:
-                        Console.WriteLine(6);
+                        Console.WriteLine("Выход из программы.");
+                        cycle = false;
                         break;
                 }
             }
@@ -83,6 +85,10 @@ namespace Practice_7_GitHUB
                 Console.WriteLine($"Развлечения: {categories["Развлечения"].Sum()} руб. - {categories["Развлечения"].Count()} операций");
             }
             return categories;
+        }
+        public static double CalculateBalance(Dictionary<string, List<double>> categories)
+        {
+            return categories["Доход"].Sum() - (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum());
         }
     }
 }
