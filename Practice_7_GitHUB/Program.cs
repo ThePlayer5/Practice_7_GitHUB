@@ -43,7 +43,7 @@ namespace Practice_7_GitHUB
                         Console.WriteLine($"Текущий баланс: {CalculateBalance(categories)}");
                         break;
                     case 4:
-                        Console.WriteLine(4);
+                        Console.WriteLine($"Прогнозируемые расходы на следующий месяц: {Math.Round(GetAverageExpense(categories), 2)}");
                         break;
                     case 5:
                         Console.WriteLine(5);
@@ -90,5 +90,14 @@ namespace Practice_7_GitHUB
         {
             return categories["Доход"].Sum() - (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum());
         }
+        public static double GetAverageExpense(Dictionary<string, List<double>> categories)
+        {
+            return (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum()) /
+                (categories["Продукты"].Count() + categories["Транспорт"].Count() + categories["Развлечения"].Count());
+        }
+        //public static double PredictNextMonthExpenses(Dictionary<string, List<double>> categories)
+        //{
+
+        //}
     }
 }
