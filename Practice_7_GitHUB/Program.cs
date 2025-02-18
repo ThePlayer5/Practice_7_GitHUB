@@ -38,6 +38,7 @@ namespace Practice_7_GitHUB
                 case "Развлечения":
                     break;
             }
+            Console.WriteLine();
 
             Console.ReadKey();
         }
