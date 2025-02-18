@@ -56,7 +56,6 @@ namespace Practice_7_GitHUB
                 }
             }
 
-
             Console.ReadKey();
         }
         public static double AddTransaction(double x, string category, Dictionary<string, List<double>> categories)
@@ -109,7 +108,22 @@ namespace Practice_7_GitHUB
                 Console.WriteLine($"Самая затратнаая категория: Транспорт ({categories["Транспорт"].Sum()} руб.)");
             }
             else Console.WriteLine($"Самая затратнаая категория: Развлечения ({categories["Развлечения"].Sum()} руб.)");
+
+            if (categories["Продукты"].Count() > categories["Транспорт"].Count() && categories["Продукты"].Count() > categories["Развлечения"].Count())
+            {
+                Console.WriteLine($"Самая затратная категория: Продукты ({categories["Продукты"].Count()} операций)");
+            }
+            else if (categories["Транспорт"].Count() > categories["Продукты"].Count() && categories["Транспорт"].Count() > categories["Развлечения"].Count())
+            {
+                Console.WriteLine($"Самая затратная категория: Транспорт ({categories["Транспорт"].Count()} операций)");
+            }
+            else Console.WriteLine($"Самая затратная категория: Развлечения ({categories["Развлечения"].Count()} операций)");
+            Console.WriteLine("Процентное распределение расходов: ");
+            Console.WriteLine($"Продукты: {categories["Продукты"].Sum()} руб. ({Math.Round(categories["Продукты"].Sum() / (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum()), 2)}%)");
+            Console.WriteLine($"Транспорт: {categories["Транспорт"].Sum()} руб. ({Math.Round(categories["Транспорт"].Sum() / (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum()), 2)}%)");
+            Console.WriteLine($"Развлечения: {categories["Развлечения"].Sum()} руб. ({Math.Round(categories["Развлечения"].Sum() / (categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum()), 2)}%)");
             return 0;
         }
+
     }
 }
