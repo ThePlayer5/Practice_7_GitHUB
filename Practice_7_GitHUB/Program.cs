@@ -55,10 +55,7 @@ namespace Practice_7_GitHUB
                         break;
                 }
             }
-            //foreach (var sum in categories["Доход"])
-            //{
-            //    Console.WriteLine(sum);
-            //}
+
 
             Console.ReadKey();
         }
