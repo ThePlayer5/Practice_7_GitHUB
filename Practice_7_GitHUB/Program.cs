@@ -46,7 +46,8 @@ namespace Practice_7_GitHUB
                         Console.WriteLine($"Прогнозируемые расходы на следующий месяц: {Math.Round(PredictNextMonthExpenses(categories), 2)} руб.");
                         break;
                     case 5:
-                        Console.WriteLine(5);
+                        Console.WriteLine("Статистика расходов: ");
+                        PrintStatistics(categories);
                         break;
                     case 6:
                         Console.WriteLine("Выход из программы.");
@@ -98,6 +99,20 @@ namespace Practice_7_GitHUB
         public static double PredictNextMonthExpenses(Dictionary<string, List<double>> categories)
         {
             return GetAverageExpense(categories) * 4;
+        }
+        public static double PrintStatistics(Dictionary<string, List<double>> categories)
+        {
+            Console.WriteLine($"Общая сумма расхожов: {categories["Продукты"].Sum() + categories["Транспорт"].Sum() + categories["Развлечения"].Sum()} руб.");
+            if (categories["Продукты"].Sum() > categories["Транспорт"].Sum() && categories["Продукты"].Sum() > categories["Развлечения"].Sum())
+            {
+                Console.WriteLine($"Самая затратнаая категория: Продукты ({categories["Продукты"].Sum()} руб.)");
+            }
+            else if (categories["Транспорт"].Sum() > categories["Продукты"].Sum() && categories["Транспорт"].Sum() > categories["Развлечения"].Sum())
+            {
+                Console.WriteLine($"Самая затратнаая категория: Транспорт ({categories["Транспорт"].Sum()} руб.)");
+            }
+            else Console.WriteLine($"Самая затратнаая категория: Развлечения ({categories["Развлечения"].Sum()} руб.)");
+            return 0;
         }
     }
 }
